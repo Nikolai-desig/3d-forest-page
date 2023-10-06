@@ -5,7 +5,7 @@
 }
 :root {
   --index: calc(1vw + 1vh);
-  --transition: 1.5s cubic-bezier(0.05, 0.5, 0, 1);
+  --transition: .5s cubic-bezier(0.05, 0.5, 0, 1);
 }
 @font-face {
   font-family: kamerik-3d;
@@ -14,7 +14,7 @@
 }
 @font-face {
   font-family: merriweather-italic-3d;
-  src: url(../fonts/merriweather-regular-italic.woff2);
+  src: url(../../fonts/merriweather-regular-italic.woff2);
 }
 body {
   background-color: black;
@@ -40,12 +40,18 @@ body {
   height: 100vh;
   transform-style: preserve-3d;
   transform: rotateX(var(--move-y)) rotateY(var(--move-x));
+  min-height: 500px;
+  will-change: transform;
+  transition: transform var(--transition);
 }
 .layers__item {
   position: absolute;
   inset: -5vw;
   background-size: cover;
   background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .layer-1 {
   transform: translateZ(-55px) scale(1.06);
@@ -64,4 +70,40 @@ body {
 }
 .layer-6 {
   transform: translateZ(380px);
+}
+.hero-content{
+	font-size: calc(var(--index) * 2.9);
+	text-align: center;
+	text-transform: uppercase;
+	letter-spacing: calc(var(--index) * -.15);
+	line-height: 1.35em;
+	margin-top: calc(var(--index) * 10);
+}
+.hero-content span{
+	display: block;
+}
+.hero-content__p{
+	text-transform: none;
+	font-family: merriweather-italic-3d;
+	letter-spacing: normal;
+	font-size: calc(var(--index) * .73);
+	line-height: 3;
+}
+.button-start{
+	font-family: Arial;
+	font-weight: 600;
+	text-transform: uppercase;
+	font-size: calc(var(--index) * .71);
+	letter-spacing: -.02vw;
+	padding: calc(var(--index) * .7) calc(var(--index) * 1.25);
+	background-color: transparent;
+	color: #fff;
+	border-radius: 10em;
+	border: rgb(255 255 255 / .4) 3px solid;
+	outline: none;
+	cursor: pointer;
+}
+
+.layer-4, .layer-5, .layer-6{
+	pointer-events: none;
 }
